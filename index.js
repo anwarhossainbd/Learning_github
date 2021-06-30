@@ -1,54 +1,49 @@
-const  redux =require("redux");
 
-// console.log(redux) ;
+const redux =require("redux")
 
-//State
-const initState ={
-     num:0
+//console.log(redux) ;
+
+//state
+const initState={
+    num:0
 }
 
 //Reducer
-
-const rootReducer =(state=initState,action)=>{
-    if (action.type=== "INC_num"){
-         return {
-             ...state ,
-             num:state.num+1
-         }
+const rootReducer =(state=initState,action )=>{
+    if (action.type==="Inc_Number"){
+        return {
+            ...state,
+            num:state.num+2
+        }
     }
 
     if (action.type==="Add_Number"){
         return {
-            ...state ,
-            num:state.num+action.a
+            ...state,
+            num:state.num +action.value
         }
     }
 
-    return state ;
+    return state;
 }
 
-
 //Store
-const store = redux.createStore(rootReducer) ;
+const store =redux.createStore(rootReducer);
 console.log(store.getState())
 
 //Subscribe
 store.subscribe(()=>{
-    console.log("Subscribe ", store.getState())
+    console.log("Subscribe",store.getState())
 })
 
 //Dispatching Action
 
 store.dispatch({
-    type: 'INC_num'
+    type:"Inc_Number"
 })
 
 store.dispatch({
-    type:'Add_Number',
-    a:34 ,
+    type:"Add_Number",
+    value:26,
 })
-
-
-
-
 
